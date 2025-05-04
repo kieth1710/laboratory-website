@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Lab System - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ url_for('static', filename='images/Background.png') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with logo and strips -->
+    <div class="header-container">
+        <div class="blue-strip"></div>
+        <div class="yellow-strip"></div>
+        <img src="{{ url_for('static', filename='images/JRU LOGO.png') }}" alt="JRU Logo" class="logo">
+    </div>
+
+    <!-- Centered login form -->
+    <div class="login-container">
+        <form class="login-box" method="POST" action="{{ url_for('login') }}">
+            <h2>LOGIN</h2>
+            {% if error %}
+            <div class="error-message">{{ error }}</div>
+            {% endif %}
+            <label for="id-number">ID Number</label>
+            <input type="text" id="id-number" name="id_number" required>
+        
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        
+            <button type="submit">Log in</button>
+            <div class="back-link">
+                <a href="{{ url_for('index') }}">Back to Home</a>
+            </div>
+        </form>        
+    </div>
+</body>
+</html>

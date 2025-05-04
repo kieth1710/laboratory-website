@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Rizal University - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Dashboard.css') }}profile-modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/JRULOGO.png') }}" alt="José Rizal University Logo" class="logo">
+        </div>
+        <div class="user-profile">
+            <!-- Display the name from session -->
+            <span>{{ name }}</span>
+            <button class="profile" id="profileButton">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Profile" class="user-img">
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h1 id="page-title"><span class="pipe">|</span>Dashboard</h1>
+        </div>
+        
+        <div class="coloumn">
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Overview Section -->
+            <div class="overview-section">
+                <div class="section-title">Overview</div>
+                <div class="overview-content">
+                    <ul>
+                        <li class="reservation-item">
+                            <div class="item-title">Upcoming Reservations</div>
+                            <div class="item-details">
+                                <p>Lab: ECE C203</p>
+                                <p>Date: April 5, 2025</p>
+                                <p>Time: 10:00 AM - 12:00 PM</p>
+                            </div>
+                        </li>
+                        <li class="reservation-item">
+                            <div class="item-title">1 Approved Request</div>
+                            <div class="item-details">
+                                <p>Lab: ECE C203</p>
+                                <p>Date: April 25, 2025</p>
+                                <p>Time: 9:00 AM - 11:00 AM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Announcements Section -->
+            <div class="announcements-section">
+                <div class="Announce">Announcements</div>
+                <div class="announcements-content">
+                    <div class="announcement-item">
+                        <p>"Reminder: All borrowed equipment must be returned by the end of the semester – May 25, 2025."</p>
+                    </div>
+                    <div class="announcement-item">
+                        <p>"The Electronics Lab will be closed for maintenance from April 18-19."</p>
+                    </div>
+                    <div class="announcement-item">
+                        <p>"New equipment added: Raspberry Pi 4 kits are now available for borrowing."</p>
+                    </div>
+                    <div class="announcement-item">
+                        <p>"Reservation cutoff time for same-day borrowing is 12:00 P.M."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="{{ url_for('dashboard_prof') }}" class="nav-item active">
+            <div class="nav-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('Equipment_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <span>Equipment</span>
+        </a>
+        <a href="{{ url_for('cart_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <span>Request</span>
+        </a>
+        <a href="{{ url_for('borrowed_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <span>Borrowed</span>
+        </a>
+        <a href="{{ url_for('history_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <span>History</span>
+        </a>
+        <a href="{{ url_for('notification_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <span>Notification</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <span>Help</span>
+        </a>
+    </nav>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="profile-modal">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="{{ name }}">
+            </div>
+            <!-- Correctly display name and email -->
+            <div class="profile-name">{{ name }}</div>
+            <div class="profile-email">{{ email }}</div>
+            <button class="logout-btn">Logout</button>
+            <div class="divider"></div>
+            <div class="student-info">
+                <div class="info-label">EMPLOYEE ID:</div>
+                <div class="info-value">{{ user_id }}</div>
+                
+                <div class="info-label">DEPARTMENT:</div>
+                <div class="info-value">{{ department }}</div>
+                
+                <div class="info-label">Course Subject Code:</div>
+                <div class="info-value">{{ course_code }} - {{ section }}</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/Profile.js') }}"></script>
+</body>
+</html>

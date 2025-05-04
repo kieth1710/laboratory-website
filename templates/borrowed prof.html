@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Rizal University - Borrowed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/borrowed.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile-modal.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/JRULOGO.png') }}" alt="José Rizal University Logo" class="logo">
+        </div>
+        <div class="user-profile">
+            <span>{{name}}</span>
+            <button class="profile" id="profileButton">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Profile" class="user-img">
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h1 id="page-title"><span class="pipe">|</span>Borrowed</h1>
+        </div>
+        
+        <div class="borrowed-container">
+            <div class="borrowed-card">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Avatar">
+                    </div>
+                    <div class="user-details">
+                        <h2>Renren Borja</h2>
+                        <p>ECE C203 - 201G</p>
+                    </div>
+                </div>
+
+                <div class="borrowed-header">
+                    <div class="status-badge">
+                        <p>Current Borrowed Items Lists</p>
+                        <span>March 12, 2025 at 10:30 am</span>
+                    </div>
+                </div>
+
+                <div class="borrowed-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Items</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ohmmeter</td>
+                                <td>April 22, 2025</td>
+                                <td>10:00 am - 12:00 pm</td>
+                                <td>Returned</td>
+                            </tr>
+                            <tr>
+                                <td>Breadboard</td>
+                                <td>April 22, 2025</td>
+                                <td>10:00 am - 12:00 pm</td>
+                                <td>Returned</td>
+                            </tr>
+                            <tr>
+                                <td>Resistors</td>
+                                <td>April 22, 2025</td>
+                                <td>10:00 am - 12:00 pm</td>
+                                <td>Returned</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="borrowed-actions">
+                    <button class="exit-btn">Exit</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="{{ url_for('dashboard_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('Equipment_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <span>Equipment</span>
+        </a>
+        <a href="{{ url_for('cart_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <span>Request</span>
+        </a>
+        <a href="{{ url_for('borrowed_prof') }}" class="nav-item active">
+            <div class="nav-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <span>Borrowed</span>
+        </a>
+        <a href="{{ url_for('history_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <span>History</span>
+        </a>
+        <a href="{{ url_for('notification_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <span>Notification</span>
+        </a>
+        <a href="{{ url_for('help') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <span>Help</span>
+        </a>
+    </nav>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="profile-modal">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="{{ name }}">
+            </div>
+            <!-- Correctly display name and email -->
+            <div class="profile-name">{{ name }}</div>
+            <div class="profile-email">{{ email }}</div>
+            <button class="logout-btn">Logout</button>
+            <div class="divider"></div>
+            <div class="student-info">
+                <div class="info-label">EMPLOYEE ID:</div>
+                <div class="info-value">{{ user_id }}</div>
+                
+                <div class="info-label">DEPARTMENT:</div>
+                <div class="info-value">{{ department }}</div>
+                
+                <div class="info-label">Course Subject Code:</div>
+                <div class="info-value">{{ course_code }} - {{ section }}</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/Profile.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Exit button functionality
+            const exitBtn = document.querySelector('.exit-btn');
+            if (exitBtn) {
+                exitBtn.addEventListener('click', function() {
+                    window.location.href = 'dashboard.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

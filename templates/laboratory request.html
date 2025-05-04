@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Rizal University - Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/request-page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile-modal.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/JRULOGO.png') }}" alt="José Rizal University Logo" class="logo">
+        </div>
+        <div class="user-profile">
+            <span>Lab Coordinator</span>
+            <button class="profile" id="profileButton">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Profile" class="user-img">
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h1 id="page-title"><span class="pipe">|</span>Request</h1>
+        </div>
+        
+        <div class="column">
+            <!-- Request Content -->
+            <div class="request-content">
+                <!-- Left Panel: Request List -->
+                <div class="request-list-panel">
+                    <div class="action-buttons">
+                        <button class="sort-btn">Sort by:</button>
+                        <button class="select-all-btn">Select all</button>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+                    
+                    <div class="request-items">
+                        <div class="request-item selected">
+                            <div class="checkbox-container">
+                                <input type="checkbox" checked>
+                            </div>
+                            <div class="user-icon">
+                                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="Renren Borja" class="user-request-img">
+                            </div>
+                            <div class="request-details">
+                                <div class="request-user">Renren Borja</div>
+                                <div class="request-type">Reservation of Materials</div>
+                                <div class="request-date">March 12, 2025</div>
+                            </div>
+                            <div class="request-status">
+                                <span class="status-dot pink"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="request-item">
+                            <div class="checkbox-container">
+                                <input type="checkbox" checked>
+                            </div>
+                            <div class="user-icon">
+                                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="Alexa Briones" class="user-request-img">
+                            </div>
+                            <div class="request-details">
+                                <div class="request-user">Alexa Briones</div>
+                                <div class="request-type">Borrowing Materials Request</div>
+                                <div class="request-date">March 20, 2025</div>
+                            </div>
+                            <div class="request-status">
+                                <span class="status-dot purple"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Panel: Request Details -->
+                <div class="request-details-panel">
+                    <div class="details-header">
+                        <div class="user-profile-header">
+                            <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="Renren Borja" class="details-user-img">
+                            <div class="user-name">Renren Borja</div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="approve-btn">APPROVE</button>
+                            <button class="deny-btn">DENY</button>
+                        </div>
+                    </div>
+                    
+                    <div class="request-form">
+                        <div class="form-title">Reservation Approval Request | ECE C203 - 2016</div>
+                        <div class="form-date">March 12, 2025 at 10:30 am</div>
+                        
+                        <div class="form-section">
+                            <div class="section-header">ITEM DETAILS</div>
+                            <div class="item-list">
+                                <div class="item-name">Item Name</div>
+                                <ul>
+                                    <li>Breadboard <span class="item-quantity">x1</span></li>
+                                    <li>Resistors <span class="item-quantity">x4</span></li>
+                                    <li>Ohmmeter <span class="item-quantity">x5</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="section-header">DATE / TIME NEEDED:</div>
+                            <div class="section-content"></div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="section-header">SUBJECT / SECTION:</div>
+                            <div class="section-content"></div>
+                        </div>
+                        
+                        <div class="signature-section">
+                            <div class="signature-box">
+                                <div class="signature-placeholder">
+                                    <i class="fas fa-pen"></i>
+                                </div>
+                                <div class="signature-label">Signature of student over printed name</div>
+                            </div>
+                            
+                            <div class="signature-box">
+                                <div class="signature-placeholder">
+                                    <i class="fas fa-pen"></i>
+                                </div>
+                                <div class="signature-label">Signature of professor over printed name</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="{{ url_for('dashboard_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('equipment_lab') }}" class="nav-item inventory-item">
+            <div class="nav-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <span>Equipment</span>
+        </a>
+        <a href="{{ url_for('Lab_request') }}" class="nav-item active">
+            <div class="nav-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <span>Request</span>
+        </a>
+        <a href="{{ url_for('History_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <span>History</span>
+        </a>
+        <a href="{{ url_for('Notification_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <span>Notification</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <span>Help</span>
+        </a>
+    </nav>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="profile-modal">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="Lab Coordinator">
+            </div>
+            <div class="profile-name">Lab Coordinator</div>
+            <div class="profile-email">Lab.staffa@my.jru.edu</div>
+            <button class="logout-btn">Logout</button>
+            <div class="divider"></div>
+            <div class="student-info">
+                <div class="info-label">ID NUMBER:</div>
+                <div class="info-value">24-287495</div>
+                
+                <div class="info-label">DEPARTMENT:</div>
+                <div class="info-value">CSE & ECE</div>
+                
+                <div class="info-label">FACULTY/STAFF:</div>
+                <div class="info-value">Laboratory Coordinator</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/Profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/request.js') }}"></script>
+</body>
+</html>

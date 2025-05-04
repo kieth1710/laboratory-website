@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Rizal University - History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/history lab.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile-modal.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/JRULOGO.png') }}" alt="José Rizal University Logo" class="logo">
+        </div>
+        <div class="user-profile">
+            <span>{{name}}</span>
+            <button class="profile" id="profileButton">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Profile" class="user-img">
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h1 id="page-title"><span class="pipe">|</span>History</h1>
+        </div>
+        
+        <div class="history-container">
+            <div class="history-card">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Avatar">
+                    </div>
+                    <div class="user-details">
+                        <h2>Laboratory Staff</h2>
+                        <p>ECE C203 - 201G</p>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-label">Filter by:</div>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="radio" name="filter" value="date">
+                            <span class="radio-custom"></span>
+                            Date
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="filter" value="type">
+                            <span class="radio-custom"></span>
+                            Type
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="filter" value="status">
+                            <span class="radio-custom"></span>
+                            Status
+                        </label>
+                    </div>
+                    <div class="search-section">
+                        <div class="search-box">
+                            <button class="search-icon">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <input type="text" placeholder="Search" class="search-input">
+                        </div>
+                        <button class="select-all-btn">Select all:</button>
+                        <button class="delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="checkbox-header">
+                                    <input type="checkbox" id="selectAll">
+                                </th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Request type</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr>
+                                <td class="checkbox-cell">
+                                    <input type="checkbox" id="row1" checked>
+                                </td>
+                                <td class="name-cell">
+                                    <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User" class="user-thumbnail">
+                                    <span>Renren Borja</span>
+                                </td>
+                                <td>March 45, 2025</td>
+                                <td>9:00 am</td>
+                                <td>
+                                    <span class="request-badge reserved">Reserved</span>
+                                </td>
+                                <td>
+                                    <span class="remarks-badge returned">
+                                        <i class="fas fa-check-circle"></i> Returned
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <!-- Row 2 -->
+                            <tr>
+                                <td class="checkbox-cell">
+                                    <input type="checkbox" id="row2" checked>
+                                </td>
+                                <td class="name-cell">
+                                    <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User" class="user-thumbnail">
+                                    <span>Renren Borja</span>
+                                </td>
+                                <td>February 10, 2025</td>
+                                <td>7:30 am</td>
+                                <td>
+                                    <span class="request-badge borrowed">Borrowed</span>
+                                </td>
+                                <td>
+                                    <span class="remarks-badge damaged">
+                                        <i class="fas fa-times-circle"></i> Lost/Damaged
+                                    </span>
+                                </td>
+                            </tr>
+                            
+                            <!-- More rows can be added dynamically with backend integration -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="history-actions">
+                    <button class="exit-btn">Exit</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="{{ url_for('dashboard_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('equipment_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <span>Equipment</span>
+        </a>
+        <a href="{{ url_for('Lab_request') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <span>Request</span>
+        </a>
+        <a href="{{ url_for('History_lab') }}" class="nav-item active">
+            <div class="nav-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <span>History</span>
+        </a>
+        <a href="{{ url_for('Notification_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <span>Notification</span>
+        </a>
+        <a href="help.html" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <span>Help</span>
+        </a>
+    </nav>
+
+    <!-- Profile Modal -->
+
+    <div class="modal-overlay" id="profileModal">
+        <div class="profile-modal">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="{{ name }}">
+            </div>
+            <div class="profile-name">{{ name }}</div>
+            <div class="profile-email">{{ email }}</div>
+            <a href="{{ url_for('logout') }}"><button class="logout-btn">Logout</button></a>
+            <div class="divider"></div>
+            <div class="student-info">
+                <div class="info-label">ID NUMBER:</div>
+                <div class="info-value">{{ user_id }}</div>
+                
+                <div class="info-label">DEPARTMENT:</div>
+                <div class="info-value">{{ department }}</div>
+                
+                <div class="info-label">POSITION:</div>
+                <div class="info-value">{{ position }}</div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="{{ url_for('static', filename='js/Profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/history.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Exit button functionality
+            const exitBtn = document.querySelector('.exit-btn');
+            if (exitBtn) {
+                exitBtn.addEventListener('click', function() {
+                    window.location.href = 'dashboard.html';
+                });
+            }
+            
+            // Select all functionality
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const rowCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+            
+            selectAllCheckbox.addEventListener('change', function() {
+                rowCheckboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

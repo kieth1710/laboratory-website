@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Rizal University - Notification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/notification lab.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile-modal.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/JRULOGO.png') }}" alt="José Rizal University Logo" class="logo">
+        </div>
+        <div class="user-profile">
+            <span>{{name}}</span>
+            <button class="profile" id="profileButton">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Profile" class="user-img">
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h1 id="page-title"><span class="pipe">|</span>Notification</h1>
+        </div>
+        
+        <div class="notification-container">
+            <div class="notification-actions">
+                <button class="refresh-btn">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="select-all-btn">Select all:</button>
+                <button class="delete-btn">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <button class="more-options-btn">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+            
+            <div class="notification-list">
+                <!-- Notification Item 1 -->
+                <div class="notification-item">
+                    <div class="notification-checkbox">
+                        <input type="checkbox" id="notif1" checked>
+                    </div>
+                    <div class="notification-indicator"></div>
+                    <div class="notification-avatar">
+                        <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="Professor">
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3>Prof.</h3>
+                            <span class="notification-info">ECE C203 - 201G</span>
+                            <span class="notification-date">February 10, 2025</span>
+                        </div>
+                        <div class="notification-message">
+                            Your request has been approved...
+                        </div>
+                    </div>
+                    <div class="notification-actions-right">
+                        <button class="message-btn">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Notification Item 2 -->
+                <div class="notification-item">
+                    <div class="notification-checkbox">
+                        <input type="checkbox" id="notif2" checked>
+                    </div>
+                    <div class="notification-indicator"></div>
+                    <div class="notification-avatar">
+                        <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="Lab Staff">
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3>Lab Staff</h3>
+                            <span class="notification-info">Laboratory Coordinator</span>
+                            <span class="notification-date">March 3, 2025</span>
+                        </div>
+                        <div class="notification-message">
+                            Borrowing or reservation of equipment is ...
+                        </div>
+                    </div>
+                    <div class="notification-actions-right">
+                        <button class="announcement-btn">
+                            <i class="fas fa-bullhorn"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notification-footer">
+                <button class="exit-btn">Exit</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="{{ url_for('dashboard_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('equipment_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <span>Equipment</span>
+        </a>
+        <a href="{{ url_for('Lab_request') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <span>Request</span>
+        </a>
+        <a href="{{ url_for('History_lab') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <span>History</span>
+        </a>
+        <a href="{{ url_for('Notification_lab') }}" class="nav-item active">
+            <div class="nav-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <span>Notification</span>
+        </a>
+        <a href="help.html" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <span>Help</span>
+        </a>
+    </nav>
+
+<!-- Professor/Lab Coordinator Notification Detail Overlay -->
+<div class="staff-notification-overlay" id="staffNotificationOverlay">
+    <div class="staff-notification-modal">
+        <div class="staff-notification-header">
+            <div class="staff-notification-title">
+                <h2 id="requestTitle">Equipment Request</h2>
+                <span class="request-status" id="requestStatus">Pending Review</span>
+            </div>
+            <button class="staff-notification-close" id="closeStaffDetailBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="staff-notification-content">
+            <div class="student-info-section">
+                <div class="student-avatar">
+                    <img src="" alt="Student" id="studentAvatar">
+                </div>
+                <div class="student-details">
+                    <h3 id="studentName"></h3>
+                    <p id="studentId"></p>
+                    <p id="studentProgram"></p>
+                    <p id="studentSection"></p>
+                </div>
+                <div class="request-timestamp">
+                    <span id="requestDate"></span>
+                    <span id="requestTime"></span>
+                </div>
+            </div>
+            
+            <div class="request-details-section">
+                <h3>Request Details</h3>
+                <div class="request-items" id="requestItems">
+                    <!-- Equipment items will be populated here -->
+                </div>
+                
+                <div class="request-schedule">
+                    <h4>Requested Schedule</h4>
+                    <p id="requestSchedule"></p>
+                </div>
+                
+                <div class="request-purpose">
+                    <h4>Purpose</h4>
+                    <p id="requestPurpose"></p>
+                </div>
+                
+                <div class="request-notes">
+                    <h4>Additional Notes</h4>
+                    <p id="requestNotes"></p>
+                </div>
+            </div>
+            
+            <div class="equipment-availability">
+                <h3>Equipment Availability</h3>
+                <div class="availability-status" id="availabilityStatus">
+                    <!-- Availability status will be populated here -->
+                </div>
+            </div>
+            
+            <div class="approval-section">
+                <h3>Approval Decision</h3>
+                <div class="approval-options">
+                    <div class="approval-message">
+                        <label for="approvalMessage">Message to Student (Optional)</label>
+                        <textarea id="approvalMessage" placeholder="Enter any specific instructions or reason for approval/rejection..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="staff-notification-footer">
+            <div class="action-buttons">
+                <button class="reject-btn" id="rejectRequestBtn">
+                    <i class="fas fa-times-circle"></i> Reject Request
+                </button>
+                <button class="approve-btn" id="approveRequestBtn">
+                    <i class="fas fa-check-circle"></i> Approve Request
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+
+        <div class="modal-overlay" id="profileModal">
+            <div class="profile-modal">
+                <div class="profile-picture">
+                    <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="{{ name }}">
+                </div>
+                <div class="profile-name">{{ name }}</div>
+                <div class="profile-email">{{ email }}</div>
+                <button class="logout-btn">Logout</button>
+                <div class="divider"></div>
+                <div class="student-info">
+                    <div class="info-label">ID NUMBER:</div>
+                    <div class="info-value">{{ user_id }}</div>
+                    
+                    <div class="info-label">DEPARTMENT:</div>
+                    <div class="info-value">{{ department }}</div>
+                    
+                    <div class="info-label">POSITION:</div>
+                    <div class="info-value">{{ position }}</div>
+                </div>
+            </div>
+        </div>
+
+    <script src="{{ url_for('static', filename='js/Profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/notification.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/notification lab.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Exit button functionality
+            const exitBtn = document.querySelector('.exit-btn');
+            if (exitBtn) {
+                exitBtn.addEventListener('click', function() {
+                    window.location.href = 'dashboard.html';
+                });
+            }
+            
+            // Select all functionality
+            const selectAllBtn = document.querySelector('.select-all-btn');
+            const checkboxes = document.querySelectorAll('.notification-checkbox input[type="checkbox"]');
+            
+            selectAllBtn.addEventListener('click', function() {
+                const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+                
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = !allChecked;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+```html
+<!-- profile_modal.html -->
+<div class="modal-overlay" id="profileModal">
+    <div class="profile-modal">
+        <div class="profile-picture">
+            <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="{{ name }}">
+        </div>
+        <div class="profile-name">{{ name }}</div>
+        <div class="profile-email">{{ email }}</div>
+        <button class="logout-btn">Logout</button>
+        <div class="divider"></div>
+        <div class="student-info">
+            <div class="info-label">Student ID:</div>
+            <div class="info-value">{{ user_id }}</div>
+            
+            <div class="info-label">Program & Year:</div>
+            <div class="info-value">{{ program_year }}</div>
+            
+            <div class="info-label">Course Subject Code:</div>
+            <div class="info-value">{{ course_code }} - {{ section }}</div>
+        </div>
+    </div>
+</div>
+```

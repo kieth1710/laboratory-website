@@ -1,0 +1,97 @@
+
+/* Header container */
+.header-container {
+    position: relative;
+    width: 100%;
+    height: 1.5in;
+}
+
+
+.blue-strip {
+    background-color: #002D62; /* JRU blue */
+    height: 0.5in; /* 0.5 inch height */
+    width: 100%;
+    position: absolute;
+    top: 1in;
+}
+
+/* Yellow strip */
+.yellow-strip {
+    background-color: #FFC72C; /* JRU yellow */
+    height: 1in; /* 1 inch height */
+    width: 100%;
+    position: absolute;
+    top: 1.5in;
+}
+
+/* JRU Logo */
+.logo {
+    position: absolute;
+    top: 120%; 
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the logo */
+    height: 2in; /* Adjust logo size */
+}
+
+/* Centering the login form */
+.login-container {
+    flex-grow: 1; /* Pushes login box below the header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Login box styling */
+.login-box {
+    background-color: rgba(240, 248, 255, 0.9); /* Light blue with transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+    height: 400px;
+}
+
+/* Login title */
+.login-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Label styling */
+.login-box label {
+    display: block;
+    font-weight: bold;
+    margin-top: 25px;
+    text-align: center;
+}
+
+/* Input fields */
+.login-box input {
+    width: 80%;
+    padding: 8px;
+    border: 2px solid #002D62; /* JRU blue border */
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Button styling */
+.login-box button {
+    border: 2px solid black;
+    background-color: #FFC72C; /* JRU yellow */
+    color: black; 
+    padding: 10px;
+    width: 50%;
+    margin-top: 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background-color: #e6b800; /* Darker yellow */
+}

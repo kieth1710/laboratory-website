@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Rizal University - Equipment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/equipment.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/JRULOGO.png') }}" alt="José Rizal University Logo" class="logo">
+        </div>
+        <div class="user-profile">
+            <span>{{name}}</span>
+            <button class="profile" id="profileButton">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="User Profile" class="user-img">
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h1 id="page-title"><span class="pipe">|</span>Equipment</h1>
+            <div class="search-container">
+                <input type="text" placeholder="Search..." class="search-input">
+                <i class="fas fa-search search-icon"></i>
+                <button class="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="coloumn">
+            <!-- Equipment Grid -->
+            <div class="equipment-grid">
+                <!-- Row 1 -->
+                <div class="equipment-card">
+                    <h3>Breadboard</h3>
+                    <img src="{{ url_for('static', filename='images/breadboard.png') }}" alt="Breadboard">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 10 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Semi-Conductor</h3>
+                    <img src="{{ url_for('static', filename='images/semiconductor.png') }}" alt="Semi-Conductor">
+                    <div class="equipment-details">
+                        <p class="status out-of-stock">Status: Out of Stock</p>
+                        <p class="stock">In stock: 0 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Capacitor</h3>
+                    <img src="{{ url_for('static', filename='images/capacitor.png') }}" alt="Capacitor">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 10 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Multimeter</h3>
+                    <img src="{{ url_for('static', filename='images/multimeter.jpg') }}" alt="Multimeter">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 10 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <!-- Row 2 -->
+                <div class="equipment-card">
+                    <h3>Processor</h3>
+                    <img src="{{ url_for('static', filename='images/processor.png') }}" alt="Processor">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 10 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Diode</h3>
+                    <img src="{{ url_for('static', filename='images/diode.png') }}" alt="Diode">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 10 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Arduino Uno</h3>
+                    <img src="{{ url_for('static', filename='images/arduino.png') }}" alt="Arduino">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 5 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Resistor Kit</h3>
+                    <img src="{{ url_for('static', filename='images/resistor.png') }}" alt="Resistor">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 8 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <!-- Row 3 -->
+                <div class="equipment-card">
+                    <h3>Oscilloscope</h3>
+                    <img src="{{ url_for('static', filename='images/oscilloscope.png') }}" alt="Oscilloscope">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 3 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Logic Analyzer</h3>
+                    <img src="{{ url_for('static', filename='images/logic-analyzer.png') }}" alt="Logic Analyzer">
+                    <div class="equipment-details">
+                        <p class="status out-of-stock">Status: Out of Stock</p>
+                        <p class="stock">In stock: 0 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Raspberry Pi</h3>
+                    <img src="{{ url_for('static', filename='images/raspberry-pi.png') }}" alt="Raspberry Pi">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 5 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+    
+                <div class="equipment-card">
+                    <h3>Soldering Iron</h3>
+                    <img src="{{ url_for('static', filename='images/soldering-iron.png') }}" alt="Soldering Iron">
+                    <div class="equipment-details">
+                        <p class="status available">Status: Available</p>
+                        <p class="stock">In stock: 7 units available</p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+            </div>
+    
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-number active">1</button>
+                <button class="page-number">2</button>
+                <button class="page-number">3</button>
+                <span class="page-ellipsis">...</span>
+                <button class="page-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <a href="{{ url_for('dashboard_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('Equipment_prof') }}" class="nav-item active">
+            <div class="nav-icon">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <span>Equipment</span>
+        </a>
+        <a href="{{ url_for('cart_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <span>Request</span>
+        </a>
+        <a href="{{ url_for('borrowed_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <span>Borrowed</span>
+        </a>
+        <a href="{{ url_for('history_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-history"></i>
+            </div>
+            <span>History</span>
+        </a>
+        <a href="{{ url_for('notification_prof') }}" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <span>Notification</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <span>Help</span>
+        </a>
+    </nav>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="profile-modal">
+            <div class="profile-picture">
+                <img src="{{ url_for('static', filename='images/sample.jpg') }}" alt="{{ name }}">
+            </div>
+            <!-- Correctly display name and email -->
+            <div class="profile-name">{{ name }}</div>
+            <div class="profile-email">{{ email }}</div>
+            <button class="logout-btn">Logout</button>
+            <div class="divider"></div>
+            <div class="student-info">
+                <div class="info-label">EMPLOYEE ID:</div>
+                <div class="info-value">{{ user_id }}</div>
+                
+                <div class="info-label">DEPARTMENT:</div>
+                <div class="info-value">{{ department }}</div>
+                
+                <div class="info-label">Course Subject Code:</div>
+                <div class="info-value">{{ course_code }} - {{ section }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dual Modal Container for Info and Add to Cart -->
+    <div class="dual-modal-container" id="dualModalContainer">
+        <!-- This container will be populated by JavaScript -->
+    </div>
+
+    <script src="{{ url_for('static', filename='js/equipment.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Profile.js') }}"></script>
+</body>
+</html>
